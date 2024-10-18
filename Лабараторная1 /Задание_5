@@ -1,1 +1,15 @@
+https://acmp.ru/index.asp?main=task&id_task=61
 
+ts1 = 0
+ts2 = 0
+
+for _ in range(4):
+    a, b = map(int, input().split())
+    ts1 += a 
+    ts2 += b 
+if ts1 > ts2:
+    print(1)
+elif ts1 < ts2:
+    print(2)
+else:
+    print("DRAW")
