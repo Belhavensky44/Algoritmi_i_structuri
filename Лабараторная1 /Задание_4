@@ -1,1 +1,8 @@
+https://acmp.ru/index.asp?main=task&id_task=907
 
+w, h, r = map(int, input().split())
+g = r * 2
+if w >= g and h >= g:
+    print("YES")
+else:
+    print("NO")
