@@ -1,1 +1,9 @@
+https://acmp.ru/index.asp?main=task&id_task=21
 
+a, b, c = map(int, input().split())
+g = []
+g.append(a)
+g.append(b)
+g.append(c)
+h = max(g) - min(g)
+print(h)
