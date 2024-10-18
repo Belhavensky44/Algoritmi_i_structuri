@@ -1,1 +1,13 @@
+https://acmp.ru/index.asp?main=task&id_task=25
 
+a, b = map(int, input().split())
+b = int(input())       
+def g(a,b):
+    if a < b:
+        return "<"
+    elif a > b:
+        return ">"
+    else:
+        return "="
+result = g(a, b)
+print(result
