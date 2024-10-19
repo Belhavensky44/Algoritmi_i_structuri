@@ -1,13 +1,8 @@
-https://acmp.ru/index.asp?main=task&id_task=25
+https://acmp.ru/index.asp?main=task&id_task=933
 
-a, b = map(int, input().split())
-b = int(input())       
-def g(a,b):
-    if a < b:
-        return "<"
-    elif a > b:
-        return ">"
-    else:
-        return "="
-result = g(a, b)
-print(result
+a, b, c, t = map(int, input().split())
+g = 0
+if t <= a:
+    print(t * b)
+else:
+    print(a * b + (t - a) * c)
