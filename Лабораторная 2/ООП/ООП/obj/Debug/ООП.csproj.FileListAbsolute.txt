@@ -1,7 +1,0 @@
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\bin\Debug\ООП.exe.config
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\bin\Debug\ООП.exe
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\bin\Debug\ООП.pdb
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\obj\Debug\ООП.csproj.AssemblyReference.cache
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\obj\Debug\ООП.csproj.CoreCompileInputs.cache
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\obj\Debug\ООП.exe
-C:\Users\Schul\Desktop\Лаба орлов\ООП\ООП\obj\Debug\ООП.pdb
