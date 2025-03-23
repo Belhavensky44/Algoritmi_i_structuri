@@ -7,14 +7,14 @@ namespace Лаб_3
         public static void Main(string[] args)
         {
             Random random = new Random();
-            int size = 1000000; // Размер массива для тестирования
+            int size = 1000000; 
 
             IHighInterfaceArray arrayShell = new HighInterfaceArrayImpl(size);
             IHighInterfaceArray arrayQuick = new HighInterfaceArrayImpl(size);
             IHighInterfaceArray arrayMerge = new HighInterfaceArrayImpl(size);
 
             FillArrayWithRandomValues(arrayShell, random, size);
-            arrayQuick = arrayShell.Clone(); // Копируем массив для одинаковых данных
+            arrayQuick = arrayShell.Clone(); 
             arrayMerge = arrayShell.Clone();
 
             Console.WriteLine("Тестирование сортировки методом Шелла:");
@@ -26,7 +26,7 @@ namespace Лаб_3
             Console.WriteLine("\nТестирование сортировки слиянием:");
             arrayMerge.SortMerge();
 
-            // Ожидание нажатия клавиши, чтобы консоль не закрывалась
+            
             Console.WriteLine("\nНажмите любую клавишу для выхода...");
             Console.ReadKey();
         }
