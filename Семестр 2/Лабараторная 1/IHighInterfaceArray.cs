@@ -11,5 +11,6 @@ namespace OOP_
         int GetSize();
         long FindMin();
         long FindMax();
+        void Sort(string sequenceType = "Knuth");
     }
 }
