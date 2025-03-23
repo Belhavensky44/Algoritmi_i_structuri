@@ -6,7 +6,7 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
     private readonly long[] array;
     private int nElems;
 
-    // Счетчики
+    
     private int comparisonCount;
     private int swapCount;
     private Stopwatch stopwatch;
@@ -17,7 +17,7 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         nElems = 0;
     }
 
-    // Копирование массива для тестирования на одинаковых данных
+    
     public HighInterfaceArrayImpl Clone()
     {
         HighInterfaceArrayImpl clone = new HighInterfaceArrayImpl(array.Length);
@@ -26,14 +26,14 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         return clone;
     }
 
-    // Метод для вставки элемента
+    
     public void Insert(long value)
     {
         array[nElems] = value;
         nElems++;
     }
 
-    // Метод для отображения массива
+    
     public void Display()
     {
         for (int i = 0; i < nElems; i++)
@@ -43,13 +43,13 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         Console.WriteLine();
     }
 
-    // Метод для получения размера массива
+    
     public int GetSize()
     {
         return nElems;
     }
 
-    // Сортировка методом Шелла
+    
     public void SortShell()
     {
         ResetCounters();
@@ -78,7 +78,7 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         PrintStatistics("Shell Sort");
     }
 
-    // Быстрая сортировка
+    
     public void SortQuick()
     {
         ResetCounters();
@@ -118,7 +118,7 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         return i + 1;
     }
 
-    // Сортировка слиянием
+    
     public void SortMerge()
     {
         ResetCounters();
@@ -187,7 +187,7 @@ public class HighInterfaceArrayImpl : IHighInterfaceArray
         }
     }
 
-    // Вспомогательные методы
+    
     private void Swap(int index1, int index2)
     {
         long temp = array[index1];
