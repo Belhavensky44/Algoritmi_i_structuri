@@ -4,28 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace lab_6
 {
     public class Graph
     {
-        public class Vertex
-        {
-            public char Label { get; private set; }
-            public bool IsVisited { get; set; }
-
-            public Vertex(char label)
-            {
-                Label = label;
-                IsVisited = false;
-            }
-        }
-
-        private List<Vertex> vertexList; 
-        private List<int>[] adjacencyList; 
+        private Dictionary<string, int> vertexIndices;
+        private List<string> vertices;
+        private List<int>[] adjacencyList;
 
         public Graph(int maxVertices)
         {
-            vertexList = new List<Vertex>(maxVertices);
+            vertexIndices = new Dictionary<string, int>();
+            vertices = new List<string>();
             adjacencyList = new List<int>[maxVertices];
 
             for (int i = 0; i < maxVertices; i++)
@@ -34,33 +25,57 @@ namespace lab_6
             }
         }
 
-        public void AddVertex(char label)
+        public bool AddVertex(string name)
         {
-            vertexList.Add(new Vertex(label));
+            if (vertexIndices.ContainsKey(name))
+                return false;
+
+            vertexIndices[name] = vertices.Count;
+            vertices.Add(name);
+            return true;
         }
 
-        public void AddEdge(int start, int end)
+        public bool AddEdge(string vertex1, string vertex2, bool autoCreateVertices = false)
         {
-            if (start >= 0 && start < vertexList.Count &&
-                end >= 0 && end < vertexList.Count)
+            if (autoCreateVertices)
             {
-                adjacencyList[start].Add(end);
-                adjacencyList[end].Add(start);
+                AddVertex(vertex1);
+                AddVertex(vertex2);
             }
-            else
+
+            if (!vertexIndices.TryGetValue(vertex1, out int index1))
             {
-                throw new ArgumentOutOfRangeException("Неверные индексы вершин");
+                Console.WriteLine($"Ошибка: вершина '{vertex1}' не существует");
+                return false;
             }
+
+            if (!vertexIndices.TryGetValue(vertex2, out int index2))
+            {
+                Console.WriteLine($"Ошибка: вершина '{vertex2}' не существует");
+                return false;
+            }
+
+            if (adjacencyList[index1].Contains(index2))
+            {
+                Console.WriteLine($"Предупреждение: ребро '{vertex1}-{vertex2}' уже существует");
+                return false;
+            }
+
+            adjacencyList[index1].Add(index2);
+            adjacencyList[index2].Add(index1);
+            Console.WriteLine($"Добавлено ребро: {vertex1}-{vertex2}");
+            return true;
         }
 
         public void PrintGraph()
         {
-            for (int i = 0; i < vertexList.Count; i++)
+            Console.WriteLine("\nТекущая структура графа:");
+            foreach (var vertex in vertices)
             {
-                Console.Write($"Вершина {vertexList[i].Label}: ");
-                foreach (var neighbor in adjacencyList[i])
+                Console.Write($"{vertex}: ");
+                foreach (var neighborIndex in adjacencyList[vertexIndices[vertex]])
                 {
-                    Console.Write($"{vertexList[neighbor].Label} ");
+                    Console.Write($"{vertices[neighborIndex]} ");
                 }
                 Console.WriteLine();
             }
@@ -71,19 +86,23 @@ namespace lab_6
     {
         static void Main()
         {
-            Graph graph = new Graph(5);
+            Graph graph = new Graph(10);
 
-            graph.AddVertex('Q');
-            graph.AddVertex('W');
-            graph.AddVertex('E');
-            graph.AddVertex('R');
-
-            graph.AddEdge(0, 1);
-            graph.AddEdge(1, 2);
-            graph.AddEdge(2, 3);
-            graph.AddEdge(0, 3);
+            graph.AddVertex("Москва");
+            graph.AddVertex("Санкт-Петербург");
+            graph.AddVertex("Казань");
+            
+            // Стандартное добавление ребра
+            graph.AddEdge("Москва", "Санкт-Петербург");
+            //Попытка добавить ребро с несуществующей вершиной
+            graph.AddEdge("Москва", "Владивосток");
+            // Автоматическое создание вершин
+            graph.AddEdge("Сочи", "Калининград", autoCreateVertices: true);
+            // Попытка добавить существующее ребро
+            graph.AddEdge("Москва", "Санкт-Петербург");
 
             graph.PrintGraph();
+
             Console.ReadLine();
         }
     }
