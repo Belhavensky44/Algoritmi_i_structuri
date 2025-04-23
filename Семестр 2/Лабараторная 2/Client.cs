@@ -7,7 +7,7 @@ namespace OOP_
         public static void Main(string[] args)
         {
             Random random = new Random();
-            int size = 10;
+            int size = 100;
 
             IHighInterfaceArray array = new HighInterfaceArrayImpl(size);
             FillArrayWithRandomValues(array, random, size);
@@ -15,10 +15,12 @@ namespace OOP_
             Console.WriteLine("Исходный массив (неотсортированный):");
             array.Display();
 
-            array.Sort(); // Вызов сортировки
+            array.Sort();
 
             Console.WriteLine("\nМассив после сортировки:");
             array.Display();
+
+            Console.ReadLine();
         }
 
         private static void FillArrayWithRandomValues(IHighInterfaceArray array, Random random, int size)
